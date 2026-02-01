@@ -40,14 +40,63 @@ bool saisirCharMax( char charMin, char *charMax ){
     return false;
 }
 
+string initChaine(int nbLettres, char charMin, char charMax) {
+    if (nbLettres == 0) {
+        return "";
+    }
+
+    char c = alea(charMin, charMax);
+
+    return c + initChaine(nbLettres - 1, charMin, charMax);
+}
+
+// je n'arrive pas a faire la fonction verifChaine
+
+void afficher(int nbLettres, const char* chaine) {
+    if (nbLettres == 0) return;
+
+    cout << *chaine << " ";
+    afficher(nbLettres - 1, chaine + 1);
+}
+
+string saisir(int nbLettres) {
+    if (nbLettres == 0) return "";
+    char c;
+    cin >> c;
+    return c + saisir(nbLettres - 1);
+}
+
+// vue que j'ai pas reussi a faire verifChaine, je ne peux pas faire la fonction estGagne
+
 int main(){
+/* 
     int a = saisirNbLettres();
     cout << "Controle ok, nb saisi : " << a << endl;
 
     char charMin, charMax;
     cout << "Caractere mini ?" << endl;
     cin >> charMin;
-    cout << saisirCharMax(charMin, &charMax);
+    bool res =saisirCharMax(charMin, &charMax);
+    cout << "1 = valable, 0 = non valable : " << res << endl;
+    if (res){
+        for (int i = 1; i <= 10; i++) {
+            cout << initChaine(i, charMin, charMax) << endl;
+        }
+    } 
+    else {
+        cout << "La partie ne peut etre jouee !" << endl;
+    }
+*/
+
+    afficher(4, "toto");   cout << endl;
+    afficher(4, "t*t*");   cout << endl;
+    afficher(4, "*o*o");   cout << endl;
+    afficher(4, "****");   cout << endl;
+
+    cout << "Saisir 4 caractères : ";
+    string chaine = saisir(4);
+    cout << chaine << endl;
+
 
 
     return 0;
